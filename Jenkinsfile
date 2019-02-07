@@ -29,12 +29,8 @@ pipeline {
                     if(datas.services.myagent3.version.toString().startsWith("1.0.") && datas.services.myagent3.version.toString()!="1.0.0")
                     createTag(datas.services.myagent3.repo.toString(),datas.services.myagent3.version.toString())
                    if(datas.services.myagent3.version.toString().startsWith("2.0."))
-                    createBranch(datas.services.myagent3.repo.toString(),datas.services.myagent3.version.toString())
-                   
-                   
-                }
-                  
-
+                    createBranch(datas.services.myagent3.repo.toString(),datas.services.myagent3.version.toString())                   
+                 }  
               }
            }
          }
