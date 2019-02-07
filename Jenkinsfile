@@ -41,33 +41,25 @@ pipeline {
 }
 
 def createBranch(String repo, String version){
-   echo "inside createBranch method and repo is "+ repo + " version is "+version
-
+   echo "inside createBranch method and repo is "+ repo + " version is "+version               
+            
+           sh " mkdir Repo "            
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Repo'], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '6e5c3081-96ac-4a13-9c02-5af7ea7bcabd', url: repo]]])            
+            
+            sshagent(['6e5c3081-96ac-4a13-9c02-5af7ea7bcabd']) {
+              sh " cd Repo && git checkout -b ${version} "
+              sh " cd Repo && git push origin ${version} "            
+              sh " rm -Rf Repo "
+            }
 }
 
-def createTag(String repo, String version){
-    def repoTag=repo
-    echo "inside createTag method and repo is "+ repoTag + " version is "+version
-    echo "!!!!!!!!!!!!!!!!!! Cloning Code !!!!!!!!!!!!!!!!!!!! "+ repoTag
-    
-    
-    //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
-    //checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/csenapati12/ansible-playbook.git']]])
-  
-  
-  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
-  
-  
-    sh """
-     git checkout master
-     git branch
-     git config --global user.name "csenapati12"
-                             git config --global user.email csenapati12@gmail.com
-     git tag -a ${version} -m '${version}' 
-  #   git remote add origin $repo
-     git remote -v
-     git push --set-upstream origin ${version}
-     
-  """
-  
+def createTag(String repo, String version){           
+            sh " mkdir Repo "            
+            checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'RelativeTargetDirectory', relativeTargetDir: 'Repo'], [$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '6e5c3081-96ac-4a13-9c02-5af7ea7bcabd', url: repo]]])
+            
+            sshagent(['6e5c3081-96ac-4a13-9c02-5af7ea7bcabd']) {
+                sh " cd Repo && git tag -a ${version} -m '${version}' "
+                sh " cd Repo && git push origin ${version} "            
+                sh " rm -Rf Repo "
+            }  
 }
