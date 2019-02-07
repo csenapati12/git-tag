@@ -2,7 +2,7 @@ services:
   myagent1: 
     repo: "https://github.com/csenapati12/ansible-playbook.git"
     branch: "*/master"
-    version: "1.0.4"
+    version: "1.0.5"
   myagent2: 
     repo: "https://github.com/csenapati12/ansible-playbook.git"
     branch: "*/master"
