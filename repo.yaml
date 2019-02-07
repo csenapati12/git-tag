@@ -3,8 +3,17 @@ services:
     repo: "https://github.com/csenapati12/ansible-playbook.git"
     branch: "*/master"
     version: "1.0.0"
-  myagent2:
-    repo: "https://github.com/csenapati12/jenkinsfiledemo.git"
+  myagent2: 
+    repo: "https://github.com/csenapati12/ansible-playbook.git"
     branch: "*/master"
     version: "1.0.0"
+  myagent3:
+    repo: "https://github.com/csenapati12/antrepo.git"
+    branch: "*/master"
+    version: "1.0.0"
+  myagent4:
+    repo: "https://github.com/csenapati12/email-ext-plugin-jelly.git"
+    branch: "*/master"
+    version: "1.0.0"
+  
   
