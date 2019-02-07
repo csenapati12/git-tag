@@ -14,6 +14,6 @@ services:
   myagent4:
     repo: "https://github.com/csenapati12/email-ext-plugin-jelly.git"
     branch: "*/master"
-    version: "1.0.1"
+    version: "2.0.0"
   
   
