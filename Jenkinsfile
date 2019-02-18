@@ -13,7 +13,7 @@ pipeline {
              steps {
                script{ 
                   // datas = readYaml (file: 'repo.yaml') 
-                   echo "ymlfile value $yml-file"
+                  // echo "ymlfile value $yml-file"
                    datas = readYaml (file: "${env.yaml_value}")                    
                              
                    if(datas.services.myagent1.version.toString().endsWith(".0.0"))
