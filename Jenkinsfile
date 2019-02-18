@@ -4,16 +4,12 @@ pipeline {
   }
     agent any
          stages{
-            stage('SCM Checkout'){
-                  steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/csenapati12/git-tag.git']]]) 
-                  }
-             }
+           
            stage('Read YAML file') {
              steps {
                script{ 
                   // datas = readYaml (file: 'repo.yaml') 
-                  // echo "ymlfile value $yml-file"
+                   //echo "ymlfile value $yaml_value"
                    datas = readYaml (file: "${env.yaml_value}")                    
                              
                    if(datas.services.myagent1.version.toString().endsWith(".0.0"))
@@ -33,4 +29,22 @@ pipeline {
               }
            }
          }
+}
+
+def createBranch(String repo, String version){
+   echo "inside createBranch method and repo is "+ repo + " version is "+version               
+            
+           sh label: '', script: '''
+           mkdir test'''
+          //  sh "git clone http://chaitanya-Inspiron-5521/csenapati12/gittag.git"
+           
+}
+
+def createTag(String repo, String version){     
+     echo "inside createTag method and repo is "+ repo + " version is "+version  
+     sh label: '', script: '''
+     mkdir test'''
+     sh "git clone http://chaitanya-Inspiron-5521/csenapati12/gittag.git"
+           
+          
 }
