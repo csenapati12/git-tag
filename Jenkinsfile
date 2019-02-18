@@ -9,9 +9,9 @@ pipeline {
            stage('Read YAML file') {
              steps {
                script{ 
-                  // datas = readYaml (file: 'repo.yaml') 
-                   echo "ymlfile value $yml-file"
-                   datas = readYaml (file: '$yml-file') 
+                  datas = readYaml (file: 'repo.yaml') 
+                  // echo "ymlfile value $yml-file"
+                   //datas = readYaml (file: '$yml-file') 
                    
                    if(datas.services. hiota_agent.version.toString().startsWith("1.0.") && datas.services.myagent4.version.toString()!="1.0.0")
                     createTag(datas.services.myagent4.repo.toString(),datas.services.myagent4.version.toString())
