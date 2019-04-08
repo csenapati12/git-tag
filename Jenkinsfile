@@ -1,6 +1,7 @@
 pipeline {
  parameters {
          string(name: 'yaml_value', defaultValue: 'repo.yaml')
+	 choices: ['myagent1\nmyagent2\nmyagent3\n']
   }
     agent any
          stages{
