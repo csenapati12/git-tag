@@ -1,8 +1,9 @@
 pipeline {
  parameters {
-         string(name: 'yaml_value', defaultValue: 'repo.yaml')
+         
 	 //string(name: 'myagent1', defaultValue: 'myagent1')
-	 choice(name: 'CHOICES', choices: ['myagent1', 'myagent2', 'myagent3'], description: '')
+	 choice(name: 'AGENTS', choices: ['myagent1', 'myagent2', 'myagent3'], description: '')
+	 choice(name: 'YAML', choices: ['repo.yaml', 'repo1.yaml'], description: '')
 	 
   }
     agent any
