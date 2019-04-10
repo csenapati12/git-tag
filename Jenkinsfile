@@ -14,7 +14,7 @@ pipeline {
                script{ 
                   // datas = readYaml (file: 'repo.yaml') 
                    //echo "ymlfile value $yaml_value"
-                   datas = readYaml (file: "${env.yaml_value}")
+                   datas = readYaml (file: "${env.YAML}")
                           
                    if(datas.services.myagent1.version.toString().endsWith(".0.0"))
                     createBranch(datas.services.myagent1.repo.toString(),datas.services.myagent1.version.toString())
