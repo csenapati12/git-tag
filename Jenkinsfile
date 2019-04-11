@@ -33,7 +33,7 @@ def createBranch(String repo, String version){
             
            sh label: '', script: '''
            mkdir test
-	   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'http://chaitanya-Inspiron-5521/csenapati12/gittag.git']]])
+	   checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/csenapati12/jenkinsfiledemo.git']]])
 	   '''
           //  sh "git clone http://chaitanya-Inspiron-5521/csenapati12/gittag.git"
            
