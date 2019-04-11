@@ -41,11 +41,16 @@ def createBranch(String repo, String version){
 
 def createTag(String repo, String version){     
      echo "inside createTag method and repo is "+ repo + " version is "+version  
-	sh "mkdir testrepo"
+	//sh "mkdir testrepo"
 	sh "cd testrepo"
 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
         sh "ls"
 	sh "git branch -a"
+	sh "git branch -a > /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out"
+	sh "chk_result=`grep 6.0.0 branch_version.out`"
+	     sh "echo $chk_result"
+
+	
 	//sh "rm -rf testrepo"
      
           
