@@ -54,9 +54,9 @@ def createTag(String repo, String version){
 	//     sh "echo $chk_result"
 	sh """
 	 cat /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out
-	for v in /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out
+	for branchname in /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out
 	do
-	 if [ $v = $ver ]; then
+	 if [ $branchname = $ver ]; then
 	  do_not_createbranch=true
 	 fi
         done
