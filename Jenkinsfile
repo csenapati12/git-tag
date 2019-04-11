@@ -41,6 +41,8 @@ def createBranch(String repo, String version){
 
 def createTag(String repo, String version){     
      echo "inside createTag method and repo is "+ repo + " version is "+version  
+	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
+
      
           
 }
