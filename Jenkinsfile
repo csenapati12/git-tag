@@ -46,7 +46,7 @@ def createTag(String repo, String version){
 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
         sh "ls"
 	sh "git branch -a"
-	sh "rm -rf testrepo"
+	//sh "rm -rf testrepo"
      
           
 }
