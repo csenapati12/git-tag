@@ -47,7 +47,7 @@ def createTag(String repo, String version){
         sh "ls"
 	sh "git branch -a"
 	sh "git branch -a > /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out"
-	sh "chk_result=`grep 6.0.0 branch_version.out`"
+	sh "chk_result=`grep 6.0.0 /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out`"
 	     sh "echo $chk_result"
 
 	
