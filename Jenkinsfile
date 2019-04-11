@@ -41,14 +41,28 @@ def createBranch(String repo, String version){
 
 def createTag(String repo, String version){     
      echo "inside createTag method and repo is "+ repo + " version is "+version  
+	echo "repo is "+ repo + " version is "+version
+				def ver = version
 	//sh "mkdir testrepo"
 	sh "cd testrepo"
 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: repo]]])
         sh "ls"
 	sh "git branch -a"
 	sh "git branch -a > /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out"
-	sh "chk_result=`grep 6.0.0 /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out`"
-	     sh "echo $chk_result"
+	//sh "chk_result=`grep 6.0.0 /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out`"
+	//     sh "echo $chk_result"
+	
+	for v in `cat /var/lib/jenkins/workspace/git-lab-yml-read/branch_version.out`
+				 do
+					if [ $v = $ver ]; then
+					do_not_createbranch=true
+					fi
+                 done
+				 if [ "$do_not_createbranch" = true ] ; then
+                   echo "Don't create branch"
+                 else
+                  echo "Create branch code here"
+                 fi
 
 	
 	//sh "rm -rf testrepo"
