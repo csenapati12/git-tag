@@ -15,5 +15,7 @@ services:
     repo: "https://github.com/csenapati12/email-ext-plugin-jelly.git"
     branch: "*/master"
     version: "2.0.0"
+    
+    Adding new line
   
   
